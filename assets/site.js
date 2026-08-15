@@ -7,7 +7,7 @@ document.documentElement.classList.add("js");
 const SITE_CONFIG = {
   whatsappNumber: "",
   instagramUrl: "https://www.instagram.com/desa_pameuntasan/",
-  tiktokUrl: "https://www.tiktok.com/@kknm.unla.pameuntasan",
+  tiktokUrl: "https://www.tiktok.com/@kknm.desa.pameuntasan?is_from_webapp=1&sender_device=pc",
 };
 
 const whatsappMessage =
