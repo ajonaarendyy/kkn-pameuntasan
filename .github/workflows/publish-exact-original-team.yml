@@ -1,0 +1,73 @@
+name: Publish exact original team photos
+on:
+  push:
+    branches:
+      - agent/restore-original-team-photos
+    paths:
+      - .github/workflows/publish-exact-original-team.yml
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Fetch and verify exact original blobs
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "dc65f843f1f52afe694d09c3e12a4b7d1a685f43" || { echo "main moved; refusing automatic publish"; exit 1; }
+          mkdir -p /tmp/team-original
+          fetch_blob() {
+            local sha="$1" name="$2"
+            gh api "repos/${REPO}/git/blobs/${sha}" --jq .content | tr -d '\n' | base64 -d > "/tmp/team-original/${name}"
+            actual="$(git hash-object "/tmp/team-original/${name}")"
+            test "$actual" = "$sha" || { echo "SHA mismatch for $name: $actual != $sha"; exit 1; }
+          }
+          fetch_blob d90e38d07f921908fdf8e8d9670ce916932f6897 andika-fajrillah-cahyadi.webp
+          fetch_blob a2ead5e66c9ae0bf341bf2b1291f1503b68cd9ae arlinggawrdhni.jpg
+          fetch_blob e2bb4391dfd70510ee946dc60cff31bf8f10e538 chevamrryaan.jpg
+          fetch_blob 8ad318bc7f7702a6f2634dff78b00e669c3c615c dedeniqbal18.jpg
+          cp /tmp/team-original/dedeniqbal18.jpg /tmp/team-original/foto-placeholder.jpg
+          test "$(git hash-object /tmp/team-original/foto-placeholder.jpg)" = "8ad318bc7f7702a6f2634dff78b00e669c3c615c"
+          fetch_blob 3525f56dfb63a7dbeb10444294446667ed515850 juan-grld.jpg
+          fetch_blob d19f3e752a96ea256aa1aa924013f94ce54bd52b kael.webp
+          fetch_blob 6fe9e8c82f665dc105d5766f04d21f92b8b09471 m-rajeb.webp
+          fetch_blob 8b04ab35c735e04501c5ac21928554e38b47539a magesta-dwitama-putra.webp
+          fetch_blob 3987feb5a2eafe01710e9d30fccdc75711045ee8 nevi-nadia.webp
+          fetch_blob abc575700b9fa9867ef076766ca39da92cfa1732 pputrawjy.jpg
+          fetch_blob 73be87fa7e95e30fb0c24e194b52567874db73c0 raisya-rahmawati.webp
+          fetch_blob 815c40db66a90434b204e8d27aa7eba814d89854 zaa-frhan.jpg
+
+          rm -rf assets/images/team
+          mkdir -p assets/images/team
+          cp -a /tmp/team-original/. assets/images/team/
+
+          test "$(git hash-object assets/images/team/andika-fajrillah-cahyadi.webp)" = d90e38d07f921908fdf8e8d9670ce916932f6897
+          test "$(git hash-object assets/images/team/arlinggawrdhni.jpg)" = a2ead5e66c9ae0bf341bf2b1291f1503b68cd9ae
+          test "$(git hash-object assets/images/team/chevamrryaan.jpg)" = e2bb4391dfd70510ee946dc60cff31bf8f10e538
+          test "$(git hash-object assets/images/team/dedeniqbal18.jpg)" = 8ad318bc7f7702a6f2634dff78b00e669c3c615c
+          test "$(git hash-object assets/images/team/foto-placeholder.jpg)" = 8ad318bc7f7702a6f2634dff78b00e669c3c615c
+          test "$(git hash-object assets/images/team/juan-grld.jpg)" = 3525f56dfb63a7dbeb10444294446667ed515850
+          test "$(git hash-object assets/images/team/kael.webp)" = d19f3e752a96ea256aa1aa924013f94ce54bd52b
+          test "$(git hash-object assets/images/team/m-rajeb.webp)" = 6fe9e8c82f665dc105d5766f04d21f92b8b09471
+          test "$(git hash-object assets/images/team/magesta-dwitama-putra.webp)" = 8b04ab35c735e04501c5ac21928554e38b47539a
+          test "$(git hash-object assets/images/team/nevi-nadia.webp)" = 3987feb5a2eafe01710e9d30fccdc75711045ee8
+          test "$(git hash-object assets/images/team/pputrawjy.jpg)" = abc575700b9fa9867ef076766ca39da92cfa1732
+          test "$(git hash-object assets/images/team/raisya-rahmawati.webp)" = 73be87fa7e95e30fb0c24e194b52567874db73c0
+          test "$(git hash-object assets/images/team/zaa-frhan.jpg)" = 815c40db66a90434b204e8d27aa7eba814d89854
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/images/team
+          git diff --cached --quiet && { echo "No changes to publish"; exit 0; }
+          git commit -m "Restore original-resolution team photos"
+          git push origin HEAD:main
