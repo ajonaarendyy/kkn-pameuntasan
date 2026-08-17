@@ -1,0 +1,76 @@
+name: Materialize team photo quality
+
+on:
+  push:
+    branches:
+      - agent/team-photo-quality-v2
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Reconstruct and verify photo package
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .photo-staging/chunk-* > /tmp/team.b64
+          base64 -d /tmp/team.b64 > /tmp/team-avif320q35.tar.gz
+          echo "cfc86e8857d9a6cf3a0c68729172088cbd34dbede6332cb2b86224b155c8a1f1  /tmp/team-avif320q35.tar.gz" | sha256sum -c -
+
+      - name: Install high-quality team images
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p assets/images/team
+          tar -xzf /tmp/team-avif320q35.tar.gz -C assets/images/team
+          python3 - <<'PY'
+          from pathlib import Path
+
+          replacements = {
+              'assets/images/team/arlinggawrdhni.jpg': 'assets/images/team/arlinggawrdhni.avif',
+              'assets/images/team/chevamrryaan.jpg': 'assets/images/team/chevamrryaan.avif',
+              'assets/images/team/dedeniqbal18.jpg': 'assets/images/team/dedeniqbal18.avif',
+              'assets/images/team/foto-placeholder.jpg': 'assets/images/team/foto-placeholder.avif',
+              'assets/images/team/juan-grld.jpg': 'assets/images/team/juan-grld.avif',
+              'assets/images/team/kael.webp': 'assets/images/team/kael.avif',
+              'assets/images/team/m-rajeb.webp': 'assets/images/team/m-rajeb.avif',
+              'assets/images/team/magesta-dwitama-putra.webp': 'assets/images/team/magesta-dwitama-putra.avif',
+              'assets/images/team/nevi-nadia.webp': 'assets/images/team/nevi-nadia.avif',
+              'assets/images/team/pputrawjy.jpg': 'assets/images/team/pputrawjy.avif',
+              'assets/images/team/raisya-rahmawati.webp': 'assets/images/team/raisya-rahmawati.avif',
+              'assets/images/team/zaa-frhan.jpg': 'assets/images/team/zaa-frhan.avif',
+          }
+          for filename in ('index.html', 'assets/site.js'):
+              p = Path(filename)
+              text = p.read_text(encoding='utf-8')
+              for old, new in replacements.items():
+                  text = text.replace(old, new)
+              p.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Validate installed files
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(find assets/images/team -maxdepth 1 -type f -name '*.avif' | wc -l)" -eq 13
+          ! grep -Eq 'assets/images/team/[^"'"' ]+\.(jpg|webp)' index.html assets/site.js
+
+      - name: Clean temporary staging and commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf .photo-staging
+          rm -f .github/workflows/materialize-team-photo-quality.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Materialize high-quality team photos"
+          git push
