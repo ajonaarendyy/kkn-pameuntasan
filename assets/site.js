@@ -1,7 +1,7 @@
-﻿document.documentElement.classList.add("js");
+document.documentElement.classList.add("js");
 
 /*
- * PENGATURAN TAUTAN â€” cukup ubah bagian ini sebelum website dipublikasikan.
+ * PENGATURAN TAUTAN – cukup ubah bagian ini sebelum website dipublikasikan.
  * Nomor WhatsApp memakai format internasional tanpa tanda +, contoh: 6281234567890.
  */
 const SITE_CONFIG = {
@@ -28,14 +28,14 @@ const channelNames = {
 };
 
 /*
- * DATA TIM â€” bagian "Tim Kami" di halaman utama.
+ * DATA TIM – bagian "Tim Kami" di halaman utama.
  * Ganti "Nama ..." dengan nama asli dan "username" dengan username Instagram
  * (tanpa @) masing-masing anggota. Anggota PERTAMA pada array members setiap
  * divisi otomatis ditampilkan sebagai foto & nama penanggung jawab di kartu
  * divisi (mirip kartu Ketua/Wakil). Anggota lainnya baru muncul saat tombol
  * "Lihat tim" pada kartu itu diklik. Untuk divisi acara/konsumsi/humas/
  * logistik/pdd, anggota pertama diberi lead: true agar ditandai "Ketua Divisi".
- * Foto masih placeholder â€” ganti sendiri src gambarnya nanti kalau sudah ada
+ * Foto masih placeholder – ganti sendiri src gambarnya nanti kalau sudah ada
  * foto asli tiap anggota (taruh di assets/images/team/ lalu isi field "photo").
  */
 const teamDivisions = {
@@ -49,7 +49,7 @@ const teamDivisions = {
   bendahara: {
     label: "Bendahara",
     members: [
-      { name: "Nama Bendahara 1", role: "Bendahara 1", instagram: "username" },
+      { name: "Frida Faozan", role: "Bendahara 1", instagram: "fridafazn", photo: "assets/images/team/frida-faozan.jpg" },
       { name: "Nama Bendahara 2", role: "Bendahara 2", instagram: "username" },
     ],
   },
