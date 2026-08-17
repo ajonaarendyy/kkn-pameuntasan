@@ -1,0 +1,89 @@
+name: Direct publish team photo quality
+
+on:
+  push:
+    branches:
+      - agent/team-photo-quality-direct-publish
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Materialize AVIF photos
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          fetch_blob() {
+            sha="$1"; path="$2"
+            mkdir -p "$(dirname "$path")"
+            gh api "repos/${GITHUB_REPOSITORY}/git/blobs/${sha}" --jq '.content' | tr -d '\n' | base64 -d > "$path"
+          }
+          fetch_blob 1203402a04e06b369c3660fbf66be92c1bcaa714 assets/images/team/andika-fajrillah-cahyadi.avif
+          fetch_blob 509a82f0dcb68a7b4ad6da5d9101978cb093c864 assets/images/team/arlinggawrdhni.avif
+          fetch_blob 6349354343d321e744da5f0d621f1bea0e76b603 assets/images/team/chevamrryaan.avif
+          fetch_blob 9949f19b67a7f62788de836a29bd189706e7dfb6 assets/images/team/dedeniqbal18.avif
+          fetch_blob 9949f19b67a7f62788de836a29bd189706e7dfb6 assets/images/team/foto-placeholder.avif
+          fetch_blob 34ddf5156347099995dcb321de2e92a3619f9c91 assets/images/team/juan-grld.avif
+          fetch_blob eedb06db5bc175c36c168e5835f14effa0dda14b assets/images/team/kael.avif
+          fetch_blob 523c943bf30e7712d4f82824972168bc09f4231d assets/images/team/m-rajeb.avif
+          fetch_blob 364f28129c6cc2f0a4fafef7902b788882eb9022 assets/images/team/magesta-dwitama-putra.avif
+          fetch_blob e81044e7fc63d2df306d3d5369016c85b93d7fc3 assets/images/team/nevi-nadia.avif
+          fetch_blob 7e0bb064a4ea22f66a0edc7f27cd0f58ac255792 assets/images/team/pputrawjy.avif
+          fetch_blob e5a3015aae8a55a8e1750de37ac82ed349313078 assets/images/team/raisya-rahmawati.avif
+          fetch_blob 257bd89b7e97588f892e062b35a31b4a96f81f51 assets/images/team/zaa-frhan.avif
+
+      - name: Verify files and update references
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          avifs = sorted(Path('assets/images/team').glob('*.avif'))
+          assert len(avifs) == 13, f'expected 13 AVIF photos, got {len(avifs)}'
+          for p in avifs:
+              b = p.read_bytes()
+              assert len(b) > 500, f'{p} too small'
+              assert b[4:12] == b'ftypavif', f'{p} invalid AVIF signature'
+          mapping = {
+              'kael.webp': 'kael.avif',
+              'chevamrryaan.jpg': 'chevamrryaan.avif',
+              'magesta-dwitama-putra.webp': 'magesta-dwitama-putra.avif',
+              'foto-placeholder.jpg': 'foto-placeholder.avif',
+              'arlinggawrdhni.jpg': 'arlinggawrdhni.avif',
+              'juan-grld.jpg': 'juan-grld.avif',
+              'raisya-rahmawati.webp': 'raisya-rahmawati.avif',
+              'm-rajeb.webp': 'm-rajeb.avif',
+              'dedeniqbal18.jpg': 'dedeniqbal18.avif',
+              'pputrawjy.jpg': 'pputrawjy.avif',
+              'nevi-nadia.webp': 'nevi-nadia.avif',
+              'zaa-frhan.jpg': 'zaa-frhan.avif',
+          }
+          for fn in ('index.html', 'assets/site.js'):
+              p = Path(fn)
+              s = p.read_text(encoding='utf-8')
+              for old, new in mapping.items():
+                  s = s.replace(old, new)
+              p.write_text(s, encoding='utf-8')
+          remaining = []
+          for fn in ('index.html', 'assets/site.js'):
+              s = Path(fn).read_text(encoding='utf-8')
+              remaining.extend(old for old in mapping if old in s)
+          assert not remaining, f'old references remain: {remaining}'
+          PY
+
+      - name: Commit and push main
+        run: |
+          set -euo pipefail
+          git config user.name "ajonarendyy"
+          git config user.email "fadlianafrendyy@gmail.com"
+          git add index.html assets/site.js assets/images/team/*.avif
+          git commit -m "Improve team photo quality"
+          git push origin HEAD:main
