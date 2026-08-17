@@ -79,7 +79,7 @@ const teamDivisions = {
     label: "Humas",
     members: [
       { name: "pputrawjy", role: "Ketua Divisi Humas", instagram: "pputrawjy", photo: "assets/images/team/pputrawjy.jpg", lead: true },
-      { name: "Nevi Nadia", role: "Anggota Humas", instagram: "Nevinadpras", photo: "assets/images/team/nevi-nadia.jpg", lead: true },
+      { name: "Nevi Nadia", role: "Anggota Humas", instagram: "Nevinadpras", photo: "assets/images/team/nevi-nadia.webp" },
       { name: "Nama Anggota 2", role: "Anggota Humas", instagram: "username" },
       { name: "Nama Anggota 3", role: "Anggota Humas", instagram: "username" },
       { name: "Nama Anggota 4", role: "Anggota Humas", instagram: "username" },
@@ -99,7 +99,7 @@ const teamDivisions = {
   pdd: {
     label: "PDD",
     members: [
-      { name: "Nama Ketua Divisi", role: "Ketua Divisi PDD", instagram: "username", lead: true },
+      { name: "Muhamad Ali", role: "Ketua Divisi PDD", instagram: "alimhdw_", photo: "assets/images/team/muhamad-ali.png", lead: true },
       { name: "Nama Anggota 1", role: "Anggota PDD", instagram: "username" },
       { name: "Nama Anggota 2", role: "Anggota PDD", instagram: "username" },
       { name: "Nama Anggota 3", role: "Anggota PDD", instagram: "username" },
