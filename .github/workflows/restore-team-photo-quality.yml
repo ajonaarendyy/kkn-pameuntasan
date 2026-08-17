@@ -1,0 +1,92 @@
+name: Restore team photo quality
+
+on:
+  push:
+    branches:
+      - agent/team-photo-quality-final
+
+permissions:
+  contents: write
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Reconstruct verified photo package from Git blobs
+        shell: bash
+        run: |
+          set -euo pipefail
+          : > /tmp/team.b64
+          for sha in \
+            cdb7aae2b040fa7018a54500827852bc1143f996 \
+            1120ffbdb7df70c247b75b597be0318bfced5e29 \
+            3a8976cce365d5c46b262bba9b4b59d13f07ea4f \
+            1774da0333307adcf9d12e776e2dad831a4f0a3b \
+            18143490467735a8c51ce975be5fce56844879f3 \
+            1a5e701fe3e83945487c001cf5a75c22c6395b14 \
+            e7ca6c2a2eea8bcf07cdfde999cd3e45028f3f7b \
+            0026236ddaf97102944139445496ab4402461d0c \
+            b8408101ec6c08cabdb3a33994085d5c802c7bae \
+            ce32195961ee5dd1bb23cd7050b99832e4830bed
+          do
+            gh api "repos/${GITHUB_REPOSITORY}/git/blobs/${sha}" --jq '.content' | tr -d '\n' | base64 -d >> /tmp/team.b64
+          done
+          test "$(wc -c < /tmp/team.b64)" -eq 71352
+          base64 -d /tmp/team.b64 > /tmp/team-avif320q35.tar.gz
+          echo "cfc86e8857d9a6cf3a0c68729172088cbd34dbede6332cb2b86224b155c8a1f1  /tmp/team-avif320q35.tar.gz" | sha256sum -c -
+
+      - name: Install high-quality team photos
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p assets/images/team
+          tar -xzf /tmp/team-avif320q35.tar.gz -C assets/images/team
+          python3 - <<'PY'
+          from pathlib import Path
+          replacements = {
+              'assets/images/team/andika-fajrillah-cahyadi.webp': 'assets/images/team/andika-fajrillah-cahyadi.avif',
+              'assets/images/team/arlinggawrdhni.jpg': 'assets/images/team/arlinggawrdhni.avif',
+              'assets/images/team/chevamrryaan.jpg': 'assets/images/team/chevamrryaan.avif',
+              'assets/images/team/dedeniqbal18.jpg': 'assets/images/team/dedeniqbal18.avif',
+              'assets/images/team/foto-placeholder.jpg': 'assets/images/team/foto-placeholder.avif',
+              'assets/images/team/juan-grld.jpg': 'assets/images/team/juan-grld.avif',
+              'assets/images/team/kael.webp': 'assets/images/team/kael.avif',
+              'assets/images/team/m-rajeb.webp': 'assets/images/team/m-rajeb.avif',
+              'assets/images/team/magesta-dwitama-putra.webp': 'assets/images/team/magesta-dwitama-putra.avif',
+              'assets/images/team/nevi-nadia.webp': 'assets/images/team/nevi-nadia.avif',
+              'assets/images/team/pputrawjy.jpg': 'assets/images/team/pputrawjy.avif',
+              'assets/images/team/raisya-rahmawati.webp': 'assets/images/team/raisya-rahmawati.avif',
+              'assets/images/team/zaa-frhan.jpg': 'assets/images/team/zaa-frhan.avif',
+          }
+          for filename in ('index.html', 'assets/site.js'):
+              p = Path(filename)
+              text = p.read_text(encoding='utf-8')
+              for old, new in replacements.items():
+                  text = text.replace(old, new)
+              p.write_text(text, encoding='utf-8')
+          PY
+          test "$(find assets/images/team -maxdepth 1 -type f -name '*.avif' | wc -l)" -eq 13
+          ! grep -Eq 'assets/images/team/[^"'"' ]+\.(jpg|webp)' index.html assets/site.js
+
+      - name: Create one clean commit on main
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f .github/workflows/restore-team-photo-quality.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          tree="$(git write-tree)"
+          git fetch origin main
+          parent="$(git rev-parse origin/main)"
+          test "$parent" = "dc65f843f1f52afe694d09c3e12a4b7d1a685f43"
+          commit="$(printf '%s\n' 'Improve team photo quality' | git commit-tree "$tree" -p "$parent")"
+          git push origin "$commit":refs/heads/main
+          git push origin --delete agent/team-photo-quality-final || true
