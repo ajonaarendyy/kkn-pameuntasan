@@ -79,7 +79,7 @@ const teamDivisions = {
     label: "Humas",
     members: [
       { name: "pputrawjy", role: "Ketua Divisi Humas", instagram: "pputrawjy", photo: "assets/images/team/pputrawjy.jpg", lead: true },
-      { name: "Nevi Nadia", role: "Anggota Humas", instagram: "Nevinadpras", photo: "assets/images/team/nevi-nadia.webp" },
+      { name: "Nevi Nadia", role: "Anggota Humas", instagram: "Nevinadpras", photo: "assets/images/team/nevi-nadia.jpg", lead: true },
       { name: "Nama Anggota 2", role: "Anggota Humas", instagram: "username" },
       { name: "Nama Anggota 3", role: "Anggota Humas", instagram: "username" },
       { name: "Nama Anggota 4", role: "Anggota Humas", instagram: "username" },
