@@ -71,8 +71,8 @@ const teamDivisions = {
       { name: "dedeniqbal18", role: "Ketua Divisi Konsumsi", instagram: "dedeniqbal18", photo: "assets/images/team/dedeniqbal18.jpg", lead: true },
       { name: "Iqbal Maulana", role: "Anggota Konsumsi", instagram: "iqbalmauulana_", photo: "assets/images/team/iqbal-maulana.jpg"},
       { name: "Andhika Hikmah", role: "andhika hikmah maulid", instagram: "dikcharito", photo: "assets/images/team/andika-konsumsi.jpg"},
-      { name: "Anita Khofsah", role: "Anggota Konsumsi", instagram: "username", },
-      { name: "Jovanka ", role: "Anggota Konsumsi", instagram: "username", },
+      { name: "Anita Khofsah", role: "Anggota Konsumsi", instagram: "username", photo: "assets/images/team/andika-konsumsi.jpg" },
+      { name: "Jovanka ", role: "Anggota Konsumsi", instagram: "username", photo: "assets/images/team/jovanka.jpg"},
     ],
   },
   humas: {
