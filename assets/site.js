@@ -43,7 +43,7 @@ const teamDivisions = {
     label: "Sekretaris",
     members: [
       { name: "arlinggawrdhni", role: "Sekretaris 1", instagram: "arlinggawrdhni", photo: "assets/images/team/arlinggawrdhni.jpg", lead: true },
-      { name: "Adina", role: "Sekretaris 2", instagram: "andiinadtr", photo: "assets/images/team/arlinggawrdhni.jpg },
+      { name: "Adina", role: "Sekretaris 2", instagram: "andiinadtr", photo: "assets/images/team/andina.jpg },
     ],
   },
   bendahara: {
