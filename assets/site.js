@@ -42,7 +42,7 @@ const teamDivisions = {
   sekretaris: {
     label: "Sekretaris",
     members: [
-      { name: "arlinggawrdhni", role: "Sekretaris 1", instagram: "arlinggawrdhni", photo: "assets/images/team/arlinggawrdhni.jpg" },
+      { name: "arlinggawrdhni", role: "Sekretaris 1", instagram: "arlinggawrdhni", photo: "assets/images/team/arlinggawrdhni.jpg", lead: true },
       { name: "Nama Sekretaris 2", role: "Sekretaris 2", instagram: "username" },
     ],
   },
