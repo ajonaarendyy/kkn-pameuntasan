@@ -80,11 +80,11 @@ const teamDivisions = {
     members: [
       { name: "pputrawjy", role: "Ketua Divisi Humas", instagram: "pputrawjy", photo: "assets/images/team/pputrawjy.jpg", lead: true },
       { name: "Nevi Nadia", role: "Anggota Humas", instagram: "Nevinadpras", photo: "assets/images/team/nevi-nadia.webp" },
-      { name: "Andika Fajrillah ", role: "Anggota Humas", instagram: "username" },
-      { name: "M.Rifky", role: "Anggota Humas", instagram: "username" },
-      { name: "Selfi Safitri", role: "Anggota Humas", instagram: "username" },
-      { name: "Reni Nurhasanah", role: "Anggota Humas", instagram: "username" },
-      { name: "Aditya Rodeo", role: "Anggota Humas", instagram: "username" },
+      { name: "Andika Fajrillah ", role: "Anggota Humas", instagram: "username" , photo: "assets/images/team/nevi-nadia.webp"},
+      { name: "M.Rifky", role: "Anggota Humas", instagram: "username", photo: "assets/images/team/nevi-nadia.webp" },
+      { name: "Selfi Safitri", role: "Anggota Humas", instagram: "selfitrr" , photo: "assets/images/team/selfi.jpg"},
+      { name: "Reni Nurhasanah", role: "Anggota Humas", instagram: "reniiinrhsnh" , photo: "assets/images/team/reni.jpg"},
+      { name: "Aditya Rodeo", role: "Anggota Humas", instagram: "username" , photo: "assets/images/team/nevi-nadia.webp"},
     ],
   },
   logistik: {
