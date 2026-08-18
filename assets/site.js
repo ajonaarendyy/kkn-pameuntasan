@@ -70,7 +70,7 @@ const teamDivisions = {
     members: [
       { name: "dedeniqbal18", role: "Ketua Divisi Konsumsi", instagram: "dedeniqbal18", photo: "assets/images/team/dedeniqbal18.jpg", lead: true },
       { name: "Iqbal Maulana", role: "Anggota Konsumsi", instagram: "iqbalmauulana_", photo: "assets/images/team/iqbal-maulana.jpg"},
-      { name: "Nama Anggota 2", role: "Anggota Konsumsi", instagram: "username", },
+      { name: "Nama Anggota 2", role: "andhika hikmah maulid", instagram: "dikcharito", photo: "assets/images/team/andika-konsumsi.jpg"},
       { name: "Nama Anggota 3", role: "Anggota Konsumsi", instagram: "username", },
       { name: "Nama Anggota 4", role: "Anggota Konsumsi", instagram: "username", },
     ],
@@ -90,10 +90,10 @@ const teamDivisions = {
     label: "Logistik",
     members: [
       { name: "zaa.frhan_", role: "Ketua Divisi Logistik", instagram: "zaa.frhan_", photo: "assets/images/team/zaa-frhan.jpg", lead: true },
-      { name: "Nama Anggota 1", role: "Anggota Logistik", instagram: "username" },
-      { name: "Nama Anggota 2", role: "Anggota Logistik", instagram: "username" },
-      { name: "Nama Anggota 3", role: "Anggota Logistik", instagram: "username" },
-      { name: "Nama Anggota 4", role: "Anggota Logistik", instagram: "username" },
+      { name: "Irma Triyani ", role: "Anggota Logistik", instagram: "irmaatry", photo: "assets/images/team/zaa-frhan.jpg" },
+      { name: "Dendri Giri Syahbani", role: "Anggota Logistik", instagram: "username", photo: "assets/images/team/zaa-frhan.jpg" },
+      { name: "Tegar", role: "Anggota Logistik", instagram: "username", photo: "assets/images/team/zaa-frhan.jpg" },
+      { name: "Rendy Firmansyah Fadliana", role: "Anggota Logistik", instagram: "fadlianaf", photo: "assets/images/team/zaa-frhan.jpg" },
     ],
   },
   pdd: {
