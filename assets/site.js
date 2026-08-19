@@ -62,7 +62,7 @@ const teamDivisions = {
       { name: "Ikhsan maulana", role: "Anggota Acara", instagram: "ikhsandhikaa_" , photo: "assets/images/team/ihsan.jpg"},
       { name: "Lucky Lumansyah", role: "Anggota Acara", instagram: "lkmnsyhh_" , photo: "assets/images/team/luki.jpg"},
       { name: "Anatasia Vinka", role: "Anggota Acara", instagram: "thvtsh" , photo: "assets/images/team/frida-faozan.jpg"},
-      { name: "Pasha fadhilah", role: "Anggota Acara", instagram: "username" , photo: "assets/images/team/frida-faozan.jpg"},
+      { name: "Pasha fadhilah", role: "Anggota Acar", instagram: "pashafdlhhhh" , photo: "assets/images/team/pasa.jpg"},
     ],
   },
   konsumsi: {
