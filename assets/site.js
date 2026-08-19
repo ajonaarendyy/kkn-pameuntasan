@@ -91,7 +91,7 @@ const teamDivisions = {
     label: "Logistik",
     members: [
       { name: "zaa.frhan_", role: "Ketua Divisi Logistik", instagram: "zaa.frhan_", photo: "assets/images/team/zaa-frhan.jpg", lead: true },
-      { name: "Irma Triyani ", role: "Anggota Logistik", instagram: "irmaatry", photo: "assets/images/team/zaa-frhan.jpg" },
+      { name: "Irma Triyani ", role: "Anggota Logistik", instagram: "irmaatry", photo: "assets/images/team/irma.jpg" },
       { name: "Dendri Giri Syahbani", role: "Anggota Logistik", instagram: "username", photo: "assets/images/team/zaa-frhan.jpg" },
       { name: "Tegar", role: "Anggota Logistik", instagram: "username", photo: "assets/images/team/zaa-frhan.jpg" },
       { name: "Rendy Firmansyah Fadliana", role: "Anggota Logistik", instagram: "fadlianaf", photo: "assets/images/team/ajona.jpg" },
