@@ -101,7 +101,7 @@ const teamDivisions = {
     label: "PDD",
     members: [
       { name: "Muhamad Ali", role: "Ketua Divisi PDD", instagram: "alimhdw_", photo: "assets/images/team/muhamad-ali.png", lead: true },
-      { name: "Zahra Salsabila", role: "Anggota PDD", instagram: "username" , photo: "assets/images/team/frida-faozan.jpg"},
+      { name: "Zahra Salsabila", role: "Anggota PDD", instagram: "rraaaila" , photo: "assets/images/team/lala.jpg"},
       { name: "Adelia malika", role: "Anggota PDD", instagram: "username" , photo: "assets/images/team/frida-faozan.jpg"},
       { name: "Muhammad Rizal", role: "Anggota PDD", instagram: "username" , photo: "assets/images/team/frida-faozan.jpg"},
       { name: "Ihsan Lumanul", role: "Anggota PDD", instagram: "username" , photo: "assets/images/team/frida-faozan.jpg"},
