@@ -50,7 +50,7 @@ const teamDivisions = {
     label: "Bendahara",
     members: [
       { name: "Frida Faozan", role: "Bendahara 1", instagram: "fridafazn", photo: "assets/images/team/frida-faozan.jpg" },
-      { name: "Nama Bendahara 2", role: "Bendahara 2", instagram: "username" },
+      { name: "stefan", role: "Bendahara 2", instagram: "stevanhendr" , photo: "assets/images/team/stepan.jpg"},
     ],
   },
   acara: {
