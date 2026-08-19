@@ -61,7 +61,7 @@ const teamDivisions = {
       { name: "M.Rajeb", role: "Anggota Acara", instagram: "ihvcrushh.u", photo: "assets/images/team/m-rajeb.webp" },
       { name: "Ikhsan maulana", role: "Anggota Acara", instagram: "ikhsandhikaa_" , photo: "assets/images/team/ihsan.jpg"},
       { name: "Lucky Lumansyah", role: "Anggota Acara", instagram: "lkmnsyhh_" , photo: "assets/images/team/luki.jpg"},
-      { name: "Anatasia Vinka", role: "Anggota Acara", instagram: "thvtsh" , photo: "assets/images/team/frida-faozan.jpg"},
+      { name: "Anatasia Vinka", role: "Anggota Acara", instagram: "thvtsh" , photo: "assets/images/team/vinka.jpg"},
       { name: "Pasha fadhilah", role: "Anggota Acara", instagram: "pashafdlhhhh" , photo: "assets/images/team/pasa.jpg"},
     ],
   },
@@ -92,7 +92,7 @@ const teamDivisions = {
     members: [
       { name: "zaa.frhan_", role: "Ketua Divisi Logistik", instagram: "zaa.frhan_", photo: "assets/images/team/zaa-frhan.jpg", lead: true },
       { name: "Irma Triyani ", role: "Anggota Logistik", instagram: "irmaatry", photo: "assets/images/team/irma.jpg" },
-      { name: "Dendri Giri Syahbani", role: "Anggota Logistik", instagram: "dendrigiriii23", photo: "assets/images/team/zaa-frhan.jpg" },
+      { name: "Dendri Giri Syahbani", role: "Anggota Logistik", instagram: "dendrigiriii23", photo: "assets/images/team/dendri.jpg" },
       { name: "Tegar", role: "Anggota Logistik", instagram: "_rnggasptra", photo: "assets/images/team/tegar.jpg" },
       { name: "Rendy Firmansyah Fadliana", role: "Anggota Logistik", instagram: "fadlianaf", photo: "assets/images/team/ajona.jpg" },
     ],
