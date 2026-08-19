@@ -59,7 +59,7 @@ const teamDivisions = {
       { name: "juan_grld", role: "Ketua Divisi Acara", instagram: "juan_grld", photo: "assets/images/team/juan-grld.jpg", lead: true },
       { name: "Raisya Rahmawati", role: "Anggota Acara", instagram: "raisyarhma", photo: "assets/images/team/raisya-rahmawati.webp" },
       { name: "M.Rajeb", role: "Anggota Acara", instagram: "ihvcrushh.u", photo: "assets/images/team/m-rajeb.webp" },
-      { name: "Ikhsan maulana", role: "Anggota Acara", instagram: "username" , photo: "assets/images/team/frida-faozan.jpg"},
+      { name: "Ikhsan maulana", role: "Anggota Acara", instagram: "ikhsandhikaa_" , photo: "assets/images/team/frida-faozan.jpg"},
       { name: "Lucky Lumansyah", role: "Anggota Acara", instagram: "lkmnsyhh_" , photo: "assets/images/team/luki.jpg"},
       { name: "Anatasia Vinka", role: "Anggota Acara", instagram: "username" , photo: "assets/images/team/frida-faozan.jpg"},
       { name: "Pasha fadhilah", role: "Anggota Acara", instagram: "username" , photo: "assets/images/team/frida-faozan.jpg"},
