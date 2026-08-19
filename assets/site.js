@@ -94,7 +94,7 @@ const teamDivisions = {
       { name: "Irma Triyani ", role: "Anggota Logistik", instagram: "irmaatry", photo: "assets/images/team/zaa-frhan.jpg" },
       { name: "Dendri Giri Syahbani", role: "Anggota Logistik", instagram: "username", photo: "assets/images/team/zaa-frhan.jpg" },
       { name: "Tegar", role: "Anggota Logistik", instagram: "username", photo: "assets/images/team/zaa-frhan.jpg" },
-      { name: "Rendy Firmansyah Fadliana", role: "Anggota Logistik", instagram: "fadlianaf", photo: "assets/images/team/zaa-frhan.jpg" },
+      { name: "Rendy Firmansyah Fadliana", role: "Anggota Logistik", instagram: "fadlianaf", photo: "assets/images/team/ajona.jpg" },
     ],
   },
   pdd: {
