@@ -22,7 +22,7 @@ const channelUrls = {
 };
 
 const channelNames = {
-  whatsapp: "Nomor WhatsApp Admin KKN",
+  whatsapp: "Nomor WhatsApp Pengaduan Admin Desa ",
   instagram: "Tautan Instagram",
   tiktok: "Tautan TikTok",
 };
