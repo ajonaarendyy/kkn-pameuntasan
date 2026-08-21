@@ -5,7 +5,7 @@ document.documentElement.classList.add("js");
  * Nomor WhatsApp memakai format internasional tanpa tanda +, contoh: 6281234567890.
  */
 const SITE_CONFIG = {
-  whatsappNumber: "6285156232413",
+  whatsappNumber: "6282120332438",
   instagramUrl: "https://www.instagram.com/desa_pameuntasan/",
   tiktokUrl: "https://www.tiktok.com/@kknm.desa.pameuntasan?is_from_webapp=1&sender_device=pc",
 };
