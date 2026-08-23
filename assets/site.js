@@ -42,7 +42,7 @@ const teamDivisions = {
   sekretaris: {
     label: "Sekretaris",
     members: [
-      { name: "arlinggawrdhni", role: "Sekretaris 1", instagram: "arlinggawrdhni", photo: "assets/images/team/arlinggawrdhni.jpg", lead: true },
+      { name: "arlinggawrdhni", role: "Sekretaris 1", instagram: "arlinggawrdhni", photo: "assets/images/team/ingga.jpg", lead: true },
       { name: "Adina", role: "Sekretaris 2", instagram: "andiinadtr", photo: "assets/images/team/andina.jpg" },
     ],
   },
@@ -71,7 +71,7 @@ const teamDivisions = {
       { name: "dedeniqbal18", role: "Ketua Divisi Konsumsi", instagram: "dedeniqbal18", photo: "assets/images/team/dedeniqbal18.jpg", lead: true },
       { name: "Iqbal Maulana", role: "Anggota Konsumsi", instagram: "iqbalmauulana_", photo: "assets/images/team/iqbal-maulana.jpg"},
       { name: "Andhika Hikmah", role: "andhika hikmah maulid", instagram: "dikcharito", photo: "assets/images/team/andika-konsumsi.jpg"},
-      { name: "Anita Khofsah", role: "Anggota Konsumsi", instagram: "anitakn__", photo: "assets/images/team/andika-konsumsi.jpg" },
+      { name: "Anita Khofsah", role: "Anggota Konsumsi", instagram: "anitakn__", photo: "assets/images/team/anita.jpg" },
       { name: "Jovanka ", role: "Anggota Konsumsi", instagram: "jovankapa", photo: "assets/images/team/jovanka.jpg"},
     ],
   },
