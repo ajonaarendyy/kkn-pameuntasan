@@ -85,7 +85,7 @@ const teamDivisions = {
       { name: "M.Rifky", role: "Anggota Humas", instagram: "rifkyy.p107", photo: "assets/images/team/rifki.jpg" },
       { name: "Selfi Safitri", role: "Anggota Humas", instagram: "selfitrr" , photo: "assets/images/team/selfi.jpg"},
       { name: "Reni Nurhasanah", role: "Anggota Humas", instagram: "reniiinrhsnh" , photo: "assets/images/team/reni.jpg"},
-      { name: "Aditya Rodeo", role: "Anggota Humas", instagram: "username" , photo: "assets/images/team/rodeo.jpg"},
+      { name: "Aditya Rodeo", role: "Anggota Humas", instagram: "adityarodeo" , photo: "assets/images/team/rodeo.jpg"},
     ],
   },
   logistik: {
