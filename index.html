@@ -44,6 +44,7 @@
         <nav class="main-nav" aria-label="Navigasi utama" data-nav>
           <a href="#peta">Peta</a>
           <a href="#fasilitas">Fasilitas</a>
+          <a href="#proker">Proker</a>
           <a href="#tentang">Tentang</a>
           <a href="#tim">Tim</a>
           <a class="nav-contact" href="#kontak">Kontak warga</a>
@@ -374,6 +375,38 @@
         </div>
       </section>
 
+      <section class="proker-section section-shell" id="proker">
+        <div class="section-heading" data-reveal>
+          <div>
+            <p class="kicker">Modul proker</p>
+            <h2>Program kerja<br />selama KKN.</h2>
+          </div>
+          <p>
+            Rangkuman kegiatan unggulan, partisipasi, dan promosi yang kami
+            jalankan bersama warga Desa Pameuntasan. Ketuk kartu untuk melihat
+            cerita dan proses di baliknya.
+          </p>
+        </div>
+
+        <div class="proker-tabs" role="tablist" aria-label="Kategori proker" data-reveal>
+          <button type="button" class="proker-tab is-active" data-proker-tab="unggulan" role="tab" aria-selected="true">
+            <span class="proker-tab-dot"></span>Unggulan
+          </button>
+          <button type="button" class="proker-tab" data-proker-tab="partisipasi" role="tab" aria-selected="false">
+            <span class="proker-tab-dot"></span>Partisipasi
+          </button>
+          <button type="button" class="proker-tab" data-proker-tab="promosi" role="tab" aria-selected="false">
+            <span class="proker-tab-dot"></span>Promosi
+          </button>
+        </div>
+
+        <div class="proker-panels" data-reveal data-delay="60">
+          <div class="proker-panel" data-proker-panel="unggulan"></div>
+          <div class="proker-panel" data-proker-panel="partisipasi" hidden></div>
+          <div class="proker-panel" data-proker-panel="promosi" hidden></div>
+        </div>
+      </section>
+
       <section class="story-section section-shell" id="tentang">
         <div class="story-card" data-reveal>
           <div class="story-copy">
@@ -480,6 +513,35 @@
           <button type="button" data-close-team aria-label="Tutup"><span></span><span></span></button>
         </div>
         <div class="team-dialog-body" data-team-dialog-body></div>
+      </div>
+    </div>
+
+    <div class="proker-dialog" data-proker-dialog role="dialog" aria-modal="true" aria-labelledby="proker-dialog-title" hidden>
+      <div class="proker-dialog-panel">
+        <div class="dialog-bar">
+          <div>
+            <small data-proker-dialog-kicker>Proses & cerita</small>
+            <strong id="proker-dialog-title" data-proker-dialog-title>Proker</strong>
+          </div>
+          <button type="button" data-close-proker aria-label="Tutup"><span></span><span></span></button>
+        </div>
+        <div class="proker-dialog-stage">
+          <button type="button" class="proker-nav proker-nav-prev" data-proker-prev aria-label="Foto sebelumnya">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <figure class="proker-dialog-figure">
+            <img data-proker-dialog-image src="" alt="" />
+            <figcaption data-proker-dialog-caption></figcaption>
+          </figure>
+          <button type="button" class="proker-nav proker-nav-next" data-proker-next aria-label="Foto berikutnya">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg>
+          </button>
+        </div>
+        <div class="proker-dialog-strip" data-proker-dialog-strip hidden></div>
+        <div class="proker-dialog-footer">
+          <p data-proker-dialog-desc></p>
+          <div class="proker-dialog-count" data-proker-dialog-count></div>
+        </div>
       </div>
     </div>
 
