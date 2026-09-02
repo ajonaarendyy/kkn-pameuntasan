@@ -111,6 +111,143 @@ const teamDivisions = {
   },
 };
 
+/*
+ * ============================================================
+ * DATA MODUL PROKER – bagian "Proker" (#proker) di halaman utama.
+ * ============================================================
+ * Isi 3 kategori: unggulan, partisipasi, promosi.
+ *
+ * Tiap proker punya:
+ *  - title       : nama proker (mis. "Peta Administrasi RW")
+ *  - tag         : label kecil di badan kartu (boleh sama dgn kategori atau custom)
+ *  - cover       : foto sampul kartu (assets/images/proker/....jpg)
+ *  - summary     : 1-2 kalimat ringkas, tampil di badan kartu
+ *  - description : deskripsi lebih panjang, tampil di bawah galeri saat dibuka
+ *  - gallery     : array foto proses/dokumentasi. Tiap foto:
+ *        { src: "assets/images/proker/....jpg", caption: "Keterangan singkat foto" }
+ *      Kalau gallery dikosongkan array [], tombol otomatis jadi
+ *      "Lihat cerita" tanpa galeri (silakan sesuaikan kalau proker itu
+ *      belum punya dokumentasi foto proses).
+ *
+ * Taruh semua foto proker di folder assets/images/proker/ lalu ganti
+ * path di bawah ini sesuai nama file kamu. Item PERTAMA di kategori
+ * "unggulan", dan proker yang SENDIRIAN di kategorinya (lihat "promosi"),
+ * otomatis tampil sebagai kartu sorotan (lebih besar, layout horizontal) —
+ * lihat class .proker-card--feature di site.css.
+ */
+const prokerData = {
+  unggulan: [
+    {
+      title: "Peta Administrasi RW",
+      tag: "Unggulan",
+      cover: "assets/images/proker/peta-cover.jpg",
+      summary: "Peta A0 batas 13 RW dan sebaran fasilitas publik Desa Pameuntasan.",
+      description:
+        "Survei lapangan, pengumpulan titik koordinat fasilitas, hingga desain akhir peta A0 yang dibagikan ke warga dalam bentuk cetak dan PDF.",
+      gallery: [
+        { src: "assets/images/proker/peta-proses-1.jpg", caption: "Survei dan pengambilan titik koordinat di lapangan" },
+        { src: "assets/images/proker/peta-proses-2.jpg", caption: "Diskusi batas wilayah RW bersama perangkat desa" },
+        { src: "assets/images/proker/peta-proses-3.jpg", caption: "Proses desain dan pewarnaan wilayah RW" },
+        { src: "assets/images/proker/peta-proses-4.jpg", caption: "Pengecekan akhir sebelum peta dicetak A0" },
+      ],
+    },
+    {
+      title: "Papan Edukasi Sampah",
+      tag: "Unggulan",
+      cover: "assets/images/proker/papan-edukasi-cover.jpg",
+      summary: "Papan informasi jenis sampah dan cara memilahnya untuk warga.",
+      description:
+        "Papan edukasi dipasang di titik strategis desa berisi panduan memilah sampah organik, anorganik, dan B3 agar warga lebih mudah memulai kebiasaan memilah dari rumah.",
+      gallery: [
+        { src: "assets/images/proker/papan-edukasi-proses-1.jpg", caption: "Perancangan desain dan materi papan edukasi" },
+        { src: "assets/images/proker/papan-edukasi-proses-2.jpg", caption: "Proses pembuatan dan pengecatan papan" },
+        { src: "assets/images/proker/papan-edukasi-proses-3.jpg", caption: "Pemasangan papan edukasi di lokasi warga" },
+      ],
+    },
+    {
+      title: "Tong Sampah Pilah",
+      tag: "Unggulan",
+      cover: "assets/images/proker/tong-sampah-cover.jpg",
+      summary: "Tong sampah pilah organik & anorganik untuk fasilitas umum.",
+      description:
+        "Pengadaan dan pengecatan tong sampah pilah yang ditempatkan di fasilitas umum sebagai tindak lanjut dari edukasi pemilahan sampah kepada warga.",
+      gallery: [
+        { src: "assets/images/proker/tong-sampah-proses-1.jpg", caption: "Persiapan dan pengecatan tong sampah" },
+        { src: "assets/images/proker/tong-sampah-proses-2.jpg", caption: "Pemberian label kategori sampah" },
+        { src: "assets/images/proker/tong-sampah-proses-3.jpg", caption: "Penempatan tong sampah di titik fasilitas umum" },
+      ],
+    },
+  ],
+  partisipasi: [
+    {
+      title: "Bebersih Masjid",
+      tag: "Partisipasi",
+      cover: "assets/images/proker/bebersih-masjid-cover.jpg",
+      summary: "Ikut membersihkan area masjid bersama warga dan remaja setempat.",
+      description:
+        "Tim KKN turut serta dalam kegiatan bersih-bersih masjid bersama warga, mulai dari menyapu halaman, mengepel lantai, hingga merapikan area wudu menjelang waktu salat.",
+      gallery: [
+        { src: "assets/images/proker/bebersih-masjid-proses-1.jpg", caption: "Membersihkan halaman dan teras masjid" },
+        { src: "assets/images/proker/bebersih-masjid-proses-2.jpg", caption: "Kerja bakti bersama warga dan remaja masjid" },
+      ],
+    },
+    {
+      title: "Gotong Royong Warga",
+      tag: "Partisipasi",
+      cover: "assets/images/proker/gotong-royong-cover.jpg",
+      summary: "Ikut serta membersihkan lingkungan bersama warga tiap RW.",
+      description:
+        "Berpartisipasi dalam kegiatan gotong royong rutin membersihkan saluran air dan lingkungan sekitar bersama warga di beberapa titik RW.",
+      gallery: [
+        { src: "assets/images/proker/gotong-royong-proses-1.jpg", caption: "Kerja bakti membersihkan saluran air" },
+        { src: "assets/images/proker/gotong-royong-proses-2.jpg", caption: "Gotong royong bersama warga dan perangkat desa" },
+      ],
+    },
+    {
+      title: "Pengajian Warga",
+      tag: "Partisipasi",
+      cover: "assets/images/proker/pengajian-cover.jpg",
+      summary: "Mengikuti pengajian rutin warga sebagai bentuk silaturahmi.",
+      description:
+        "Tim KKN hadir dan ikut serta dalam pengajian rutin warga, menjadi ajang mempererat silaturahmi sekaligus memperkenalkan program-program KKN kepada jemaah.",
+      gallery: [
+        { src: "assets/images/proker/pengajian-proses-1.jpg", caption: "Mengikuti pengajian rutin bersama warga" },
+        { src: "assets/images/proker/pengajian-proses-2.jpg", caption: "Silaturahmi dengan jemaah pengajian" },
+      ],
+    },
+    {
+      title: "Mengajar di SD saat 17 Agustusan",
+      tag: "Partisipasi",
+      cover: "assets/images/proker/ngajar-17an-cover.jpg",
+      summary: "Mendampingi lomba dan mengajar di SD dalam rangkaian HUT RI.",
+      description:
+        "Membantu kegiatan belajar mengajar sekaligus mendampingi lomba-lomba 17 Agustusan di SDN Pameuntasan sebagai bagian dari perayaan Hari Kemerdekaan bersama siswa.",
+      gallery: [
+        { src: "assets/images/proker/ngajar-17an-proses-1.jpg", caption: "Mendampingi lomba 17 Agustus bersama siswa" },
+        { src: "assets/images/proker/ngajar-17an-proses-2.jpg", caption: "Kegiatan belajar mengajar di kelas" },
+      ],
+    },
+  ],
+  promosi: [
+    {
+      title: "Promosi Kampus ke Sekolah",
+      tag: "Promosi",
+      cover: "assets/images/proker/promosi-kampus-cover.jpg",
+      summary:
+        "Memperkenalkan Universitas Langlangbuana kepada siswa SMA/SMK di sekitar desa, salah satunya SMAN 1 Margaasih.",
+      description:
+        "Tim KKN berkunjung ke sekolah menengah di sekitar Desa Pameuntasan, salah satunya SMAN 1 Margaasih, untuk memperkenalkan Universitas Langlangbuana kepada siswa kelas akhir — mulai dari program studi, jalur pendaftaran, hingga sesi tanya jawab seputar dunia kuliah.",
+      gallery: [
+        { src: "assets/images/proker/promosi-kampus-proses-1.jpg", caption: "Sesi perkenalan kampus di SMAN 1 Margaasih" },
+        { src: "assets/images/proker/promosi-kampus-proses-2.jpg", caption: "Tanya jawab seputar pendaftaran dan jurusan" },
+        { src: "assets/images/proker/promosi-kampus-proses-3.jpg", caption: "Foto bersama siswa dan guru pendamping" },
+      ],
+    },
+  ],
+};
+
+const prokerPhotoFallback = "assets/images/proker/foto-placeholder.jpg";
+
 const toast = document.querySelector("[data-toast]");
 let toastTimer;
 
@@ -335,6 +472,222 @@ teamDialog?.addEventListener("click", (event) => {
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && teamDialog && !teamDialog.hidden) closeTeamDialog();
+});
+
+/*
+ * ============================================================
+ * RENDER & INTERAKSI MODUL PROKER
+ * ============================================================
+ */
+
+const categoryTape = {
+  unggulan: "tape-gold",
+  partisipasi: "tape-green",
+  promosi: "tape-blue",
+};
+
+function renderProkerPanels() {
+  Object.keys(prokerData).forEach((categoryKey) => {
+    const panel = document.querySelector(`[data-proker-panel="${categoryKey}"]`);
+    if (!panel) return;
+
+    const items = prokerData[categoryKey];
+    panel.innerHTML = items
+      .map((item, index) => {
+        const hasGallery = Array.isArray(item.gallery) && item.gallery.length > 0;
+        const buttonLabel = hasGallery ? "Lihat proses" : "Lihat cerita";
+        const metaText = hasGallery ? `${item.gallery.length} foto proses` : "Dokumentasi";
+        const isFeature = categoryKey === "unggulan" ? index === 0 : items.length === 1;
+        const tapeClass = categoryTape[categoryKey] || "tape-gold";
+
+        return `
+          <article class="proker-card${isFeature ? " proker-card--feature" : ""}">
+            <span class="proker-tape ${tapeClass}" aria-hidden="true"></span>
+            <div class="proker-card-media">
+              <img
+                src="${item.cover}"
+                alt="${item.title}"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='${prokerPhotoFallback}';"
+              />
+            </div>
+            <div class="proker-card-body">
+              <small>${item.tag || ""}</small>
+              <strong>${item.title}</strong>
+              <p>${item.summary || ""}</p>
+              <div class="proker-card-footer">
+                <span class="proker-card-meta">${metaText}</span>
+                <button type="button" class="proker-card-action" data-open-proker="${categoryKey}" data-proker-index="${index}">
+                  ${buttonLabel}
+                  <span aria-hidden="true">↗</span>
+                </button>
+              </div>
+            </div>
+          </article>`;
+      })
+      .join("");
+  });
+}
+
+renderProkerPanels();
+
+const prokerTabs = document.querySelectorAll("[data-proker-tab]");
+const prokerPanels = document.querySelectorAll("[data-proker-panel]");
+
+prokerTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    const key = tab.dataset.prokerTab;
+
+    prokerTabs.forEach((t) => {
+      const isActive = t === tab;
+      t.classList.toggle("is-active", isActive);
+      t.setAttribute("aria-selected", String(isActive));
+    });
+
+    prokerPanels.forEach((panel) => {
+      panel.hidden = panel.dataset.prokerPanel !== key;
+    });
+  });
+});
+
+const prokerDialog = document.querySelector("[data-proker-dialog]");
+const prokerDialogTitle = document.querySelector("[data-proker-dialog-title]");
+const prokerDialogKicker = document.querySelector("[data-proker-dialog-kicker]");
+const prokerDialogImage = document.querySelector("[data-proker-dialog-image]");
+const prokerDialogCaption = document.querySelector("[data-proker-dialog-caption]");
+const prokerDialogDesc = document.querySelector("[data-proker-dialog-desc]");
+const prokerDialogCount = document.querySelector("[data-proker-dialog-count]");
+const prokerDialogStrip = document.querySelector("[data-proker-dialog-strip]");
+const prokerPrevButton = document.querySelector("[data-proker-prev]");
+const prokerNextButton = document.querySelector("[data-proker-next]");
+
+let activeProkerItem = null;
+let activeProkerPhoto = 0;
+let lastProkerTrigger;
+let prokerDialogHideTimer;
+
+function renderProkerStrip() {
+  if (!prokerDialogStrip || !activeProkerItem) return;
+  const gallery = activeProkerItem.gallery || [];
+
+  if (gallery.length < 2) {
+    prokerDialogStrip.hidden = true;
+    prokerDialogStrip.innerHTML = "";
+    return;
+  }
+
+  prokerDialogStrip.hidden = false;
+  prokerDialogStrip.innerHTML = gallery
+    .map(
+      (photo, i) => `
+        <button type="button" class="proker-thumb${i === activeProkerPhoto ? " is-active" : ""}" data-proker-thumb="${i}" aria-label="Lihat foto ${i + 1}">
+          <img src="${photo.src}" alt="" loading="lazy" onerror="this.onerror=null;this.src='${prokerPhotoFallback}';" />
+        </button>`
+    )
+    .join("");
+}
+
+function updateProkerDialogPhoto() {
+  if (!activeProkerItem) return;
+  const gallery = activeProkerItem.gallery || [];
+  const hasGallery = gallery.length > 0;
+
+  if (hasGallery) {
+    const photo = gallery[activeProkerPhoto];
+    if (prokerDialogImage) {
+      prokerDialogImage.src = photo.src;
+      prokerDialogImage.alt = photo.caption || activeProkerItem.title;
+      prokerDialogImage.onerror = function () {
+        this.onerror = null;
+        this.src = prokerPhotoFallback;
+      };
+    }
+    if (prokerDialogCaption) prokerDialogCaption.textContent = photo.caption || "";
+    if (prokerDialogCount) prokerDialogCount.textContent = `Foto ${activeProkerPhoto + 1} / ${gallery.length}`;
+  } else if (prokerDialogImage) {
+    prokerDialogImage.src = activeProkerItem.cover;
+    prokerDialogImage.alt = activeProkerItem.title;
+    if (prokerDialogCaption) prokerDialogCaption.textContent = "";
+    if (prokerDialogCount) prokerDialogCount.textContent = "";
+  }
+
+  const showNav = hasGallery && gallery.length > 1;
+  prokerPrevButton?.toggleAttribute("hidden", !showNav);
+  prokerNextButton?.toggleAttribute("hidden", !showNav);
+
+  renderProkerStrip();
+}
+
+function openProkerDialog(categoryKey, index, trigger) {
+  const item = prokerData[categoryKey]?.[index];
+  if (!prokerDialog || !item) return;
+
+  activeProkerItem = item;
+  activeProkerPhoto = 0;
+  lastProkerTrigger = trigger;
+  window.clearTimeout(prokerDialogHideTimer);
+
+  if (prokerDialogKicker) prokerDialogKicker.textContent = `Proses & cerita — ${item.tag || ""}`;
+  if (prokerDialogTitle) prokerDialogTitle.textContent = item.title;
+  if (prokerDialogDesc) prokerDialogDesc.textContent = item.description || item.summary || "";
+
+  updateProkerDialogPhoto();
+
+  prokerDialog.hidden = false;
+  document.body.classList.add("dialog-open");
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => prokerDialog.classList.add("is-open"));
+  });
+
+  prokerDialog.querySelector("[data-close-proker]")?.focus();
+}
+
+function closeProkerDialog() {
+  if (!prokerDialog || prokerDialog.hidden) return;
+  prokerDialog.classList.remove("is-open");
+  document.body.classList.remove("dialog-open");
+  window.clearTimeout(prokerDialogHideTimer);
+  prokerDialogHideTimer = window.setTimeout(() => {
+    prokerDialog.hidden = true;
+    activeProkerItem = null;
+  }, 260);
+  lastProkerTrigger?.focus();
+}
+
+function stepProkerPhoto(direction) {
+  if (!activeProkerItem) return;
+  const gallery = activeProkerItem.gallery || [];
+  if (gallery.length < 2) return;
+  activeProkerPhoto = (activeProkerPhoto + direction + gallery.length) % gallery.length;
+  updateProkerDialogPhoto();
+}
+
+document.addEventListener("click", (event) => {
+  const trigger = event.target.closest("[data-open-proker]");
+  if (!trigger) return;
+  openProkerDialog(trigger.dataset.openProker, Number(trigger.dataset.prokerIndex), trigger);
+});
+
+document.querySelector("[data-close-proker]")?.addEventListener("click", closeProkerDialog);
+prokerDialog?.addEventListener("click", (event) => {
+  if (event.target === prokerDialog) closeProkerDialog();
+});
+prokerPrevButton?.addEventListener("click", () => stepProkerPhoto(-1));
+prokerNextButton?.addEventListener("click", () => stepProkerPhoto(1));
+
+prokerDialogStrip?.addEventListener("click", (event) => {
+  const thumb = event.target.closest("[data-proker-thumb]");
+  if (!thumb || !activeProkerItem) return;
+  activeProkerPhoto = Number(thumb.dataset.prokerThumb);
+  updateProkerDialogPhoto();
+});
+
+document.addEventListener("keydown", (event) => {
+  if (!prokerDialog || prokerDialog.hidden) return;
+  if (event.key === "Escape") closeProkerDialog();
+  if (event.key === "ArrowLeft") stepProkerPhoto(-1);
+  if (event.key === "ArrowRight") stepProkerPhoto(1);
 });
 
 async function sharePortal() {
