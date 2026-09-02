@@ -2145,6 +2145,476 @@ svg {
   outline-offset: 3px;
 }
 
+/* =========================================
+   MODUL PROKER — Unggulan / Partisipasi / Promosi
+   Bahasa desain: sambungan dari "corkboard dokumentasi" yang sama
+   dipakai di section Tim (kertas + selotip + bayangan tajam), bukan
+   kartu SaaS generik. Foto proker "ditempel" dengan selotip warna
+   sesuai kategori; kartu pertama di Unggulan (Peta) dan satu-satunya
+   kartu di Promosi tampil sebagai sorotan (layout horizontal besar)
+   karena memang itu yang paling relevan untuk ditonjolkan.
+   ========================================= */
+
+.proker-section {
+  padding-block: 124px;
+}
+
+.proker-tabs {
+  display: inline-flex;
+  gap: 6px;
+  margin: 0 0 32px;
+  padding: 6px;
+  background: var(--white);
+  border: 1px solid rgba(18, 53, 91, 0.12);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+}
+
+.proker-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  transition: color 180ms ease, background 180ms ease;
+}
+
+.proker-tab-dot {
+  width: 6px;
+  height: 6px;
+  background: currentColor;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.proker-tab:hover {
+  color: var(--navy);
+}
+
+.proker-tab.is-active {
+  color: var(--white);
+  background: var(--navy);
+  box-shadow: 0 5px 0 var(--gold);
+}
+
+.proker-tab.is-active .proker-tab-dot {
+  background: var(--gold);
+  opacity: 1;
+}
+
+.proker-panel {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.proker-panel[hidden] {
+  display: none;
+}
+
+.proker-panel[data-proker-panel="partisipasi"] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.proker-panel[data-proker-panel="promosi"] {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.proker-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--paper);
+  border: 0;
+  border-radius: 5px;
+  box-shadow: 0 14px 30px rgba(10, 41, 73, 0.14);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.proker-card:hover {
+  box-shadow: 0 20px 44px rgba(10, 41, 73, 0.2);
+  transform: translateY(-5px);
+}
+
+.proker-card .proker-tape {
+  position: absolute;
+  top: -10px;
+  left: 26px;
+  z-index: 2;
+  width: 44px;
+  height: 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+  transform: rotate(-3deg);
+}
+
+.proker-card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--navy-soft);
+}
+
+.proker-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 500ms ease;
+}
+
+.proker-card:hover .proker-card-media img {
+  transform: scale(1.06);
+}
+
+.proker-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 20px 20px 22px;
+}
+
+.proker-card-body small {
+  margin-bottom: 7px;
+  color: var(--green);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.proker-card-body strong {
+  color: var(--navy);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.proker-card-body p {
+  flex: 1;
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.proker-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.proker-card-meta {
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.proker-card-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  color: var(--navy);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.proker-card-action span {
+  font-size: 15px;
+  transition: transform 180ms ease;
+}
+
+.proker-card-action:hover {
+  color: var(--green);
+}
+
+.proker-card-action:hover span {
+  transform: translate(3px, -3px);
+}
+
+/* Kartu sorotan: item pertama Unggulan, dan satu-satunya item Promosi */
+.proker-card--feature {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: stretch;
+}
+
+.proker-card--feature .proker-card-media {
+  aspect-ratio: auto;
+  min-height: 340px;
+}
+
+.proker-card--feature .proker-card-body {
+  justify-content: center;
+  padding: 34px 38px;
+}
+
+.proker-card--feature .proker-card-body small {
+  font-size: 10px;
+}
+
+.proker-card--feature .proker-card-body strong {
+  font-size: 30px;
+}
+
+.proker-card--feature .proker-card-body p {
+  flex: 0 1 auto;
+  max-width: 46ch;
+  font-size: 13.5px;
+}
+
+.proker-card--feature .proker-tape {
+  left: 30px;
+}
+
+/* Dialog galeri proker */
+
+.proker-dialog {
+  position: fixed;
+  z-index: 1120;
+  inset: 0;
+  display: grid;
+  padding: 16px;
+  opacity: 0;
+  place-items: center;
+  transition: opacity 220ms ease;
+  pointer-events: none;
+}
+
+.proker-dialog.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.proker-dialog-panel {
+  display: flex;
+  overflow: hidden;
+  width: min(860px, 100%);
+  max-height: calc(100dvh - 32px);
+  flex-direction: column;
+  background: var(--paper);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 24px;
+  box-shadow: 0 30px 100px rgba(4, 24, 43, 0.45);
+  transform: translateY(16px) scale(0.96);
+  transition: transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.proker-dialog.is-open .proker-dialog-panel {
+  transform: translateY(0) scale(1);
+}
+
+.proker-dialog-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 14px;
+  background: #0d223a;
+}
+
+.proker-dialog-figure {
+  display: grid;
+  overflow: hidden;
+  margin: 0;
+  border-radius: 14px;
+}
+
+.proker-dialog-figure img {
+  display: block;
+  width: 100%;
+  max-height: 52dvh;
+  object-fit: contain;
+  background: #0d223a;
+}
+
+.proker-dialog-figure figcaption {
+  padding: 10px 4px 2px;
+  color: #cfe0ee;
+  font-size: 10px;
+  text-align: center;
+}
+
+.proker-nav {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  place-items: center;
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 180ms ease;
+}
+
+.proker-nav:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.proker-nav svg {
+  width: 18px;
+  height: 18px;
+}
+
+.proker-dialog-strip {
+  display: flex;
+  gap: 8px;
+  padding: 12px 20px 0;
+  overflow-x: auto;
+  background: #0d223a;
+}
+
+.proker-thumb {
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  overflow: hidden;
+  background: #16314f;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 180ms ease, border-color 180ms ease;
+}
+
+.proker-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.proker-thumb:hover {
+  opacity: 0.85;
+}
+
+.proker-thumb.is-active {
+  opacity: 1;
+  border-color: var(--gold);
+}
+
+.proker-dialog-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 20px;
+  border-top: 1px solid var(--line);
+}
+
+.proker-dialog-footer p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.proker-dialog-count {
+  flex-shrink: 0;
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+@media (max-width: 1060px) {
+  .proker-panel {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .proker-card--feature {
+    grid-template-columns: 1fr;
+  }
+
+  .proker-card--feature .proker-card-media {
+    min-height: 260px;
+  }
+
+  .proker-card--feature .proker-card-body strong {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 800px) {
+  .proker-section {
+    padding-block: 88px;
+  }
+
+  .proker-tabs {
+    display: flex;
+    width: 100%;
+  }
+
+  .proker-tab {
+    flex: 1;
+    justify-content: center;
+    padding: 10px 8px;
+    font-size: 10.5px;
+  }
+
+  .proker-panel,
+  .proker-panel[data-proker-panel="partisipasi"] {
+    grid-template-columns: 1fr;
+  }
+
+  .proker-card--feature .proker-card-body {
+    padding: 26px 24px;
+  }
+
+  .proker-card--feature .proker-card-body strong {
+    font-size: 23px;
+  }
+
+  .proker-dialog-stage {
+    grid-template-columns: auto 1fr auto;
+    padding: 10px;
+  }
+
+  .proker-nav {
+    width: 34px;
+    height: 34px;
+  }
+
+  .proker-dialog-figure img {
+    max-height: 40dvh;
+  }
+
+  .proker-thumb {
+    width: 44px;
+    height: 44px;
+  }
+
+  .proker-dialog-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
 @media (max-width: 1060px) {
   .hero-panel {
     min-height: auto;
